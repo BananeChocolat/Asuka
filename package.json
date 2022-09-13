@@ -1,0 +1,24 @@
+{
+  "name": "asuka",
+  "version": "1.0.0",
+  "description": "Le bot discord \"Asuka\" arrive enfin sur GitHub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BananeChocolat/Asuka.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BananeChocolat/Asuka/issues"
+  },
+  "homepage": "https://github.com/BananeChocolat/Asuka#readme",
+  "dependencies": {
+    "discord.js": "^14.3.0",
+    "dotenv": "^16.0.2"
+  }
+}
