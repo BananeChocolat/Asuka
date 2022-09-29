@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports = async (bot, message) => {
+	if (message.content.endsWith('quoi')) message.reply('feur :slight_smile:');
 
     let prefix = '&';
 

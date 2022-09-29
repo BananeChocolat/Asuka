@@ -7,9 +7,9 @@ module.exports = {
     dm: false,
 
     async run(bot, interaction) {
+	interaction.reply('Le Royaume de la tolérance')
         for (let i = 0; i < 15; i++) {
             await interaction.channel.send('🏳‍🌈');
         }
-        interaction.reply('Le Royaume de la tolérance')
     }
 }
