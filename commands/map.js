@@ -23,7 +23,7 @@ module.exports = {
             name: 'zoom',
             type: 'number',
             description: 'Le zoom de la carte',
-            required: false
+            required: true
         }
     ],
 
