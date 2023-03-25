@@ -1,7 +1,12 @@
 const Discord = require('discord.js');
 
 module.exports = async (bot, message) => {
-	if (message.content.endsWith('quoi')) message.reply('feur :slight_smile:');
+
+    if (message.channel.type === 'DM'){
+        let text = message.content
+    }
+
+	if (message.content.slice(-7).toLowerCase().includes('quoi')) message.reply('feur :slight_smile:');
 
     let prefix = '&';
 

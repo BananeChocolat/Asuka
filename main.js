@@ -2,7 +2,7 @@ console.log('\n\n\nTaux de synchronisation en augmentation... \n');
 
 const Discord = require('discord.js');
 const config = require('./config');
-const intents = new Discord.IntentsBitField(3276799)
+const intents = new Discord.IntentsBitField(40451) //3276799
 const bot = new Discord.Client({disableMentions: "all", shards: "auto", restTimeOffset: 0, intents});
 const loadCommands = require('./loaders/loadCommands');
 const loadEvents = require('./loaders/loadEvents');

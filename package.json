@@ -22,6 +22,7 @@
     "discord.js": "^14.3.0",
     "fs": "^0.0.1-security",
     "node-fetch": "^2.6.1",
+    "openai": "^3.2.1",
     "osm-static-maps": "^3.10.3"
   }
 }
