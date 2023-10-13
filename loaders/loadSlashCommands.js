@@ -2,31 +2,31 @@ const Discord = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
 var colors = require('colors');
+const path = require('node:path');
+const fs = require('node:fs');
+const config = require('../config');
+const rest = new REST({ version: '10' }).setToken(config.token);
 
 module.exports = async (bot) => {
+    const commands = [];
+    const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const command = require(`../commands/${file}`);
+        commands.push(command.data.toJSON());
+    }
+    (async () => {
+        try {
+            console.log(`Started refreshing ${commands.length} application (/) commands.`);
     
-    let commands = [];
-    bot.commands.forEach(command => {
-
-        let slashCommand = new Discord.SlashCommandBuilder()
-        .setName(command.name)
-        .setDescription(command.description)
-        .setDMPermission(command.dm)
-        .setDefaultMemberPermissions(command.permission === "Aucune" ? null : command.permission);
-
-        if (command.options?.length >= 1) {
-            for(let i = 0; i < command.options.length; i++) {
-                slashCommand[`add${command.options[i].type.slice(0,1).toUpperCase() + command.options[i].type.slice(1, command.options[i].type.length)}Option`](option => option
-                    .setName(command.options[i].name)
-                    .setDescription(command.options[i].description)
-                    .setRequired(command.options[i].required))}
-
-        };
-        commands.push(slashCommand);
-    })
-
-    const rest = new REST({ version: '10' }).setToken(bot.token);
-
-    await rest.put(Routes.applicationCommands(bot.user.id), { body: commands });
-    console.log(`[LOAD | ${new Date().toLocaleString('fr-FR')}]`.blue + " Commandes Slash chargées !".green);
+            // The put method is used to fully refresh all commands in the guild with the current set
+            const data = await rest.put(
+                Routes.applicationCommands(config.clientId),{ body: commands },
+            );
+    
+            console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+        } catch (error) {
+            // And of course, make sure you catch and log any errors!
+            console.error(error);
+        }
+    })();
 }

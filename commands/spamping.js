@@ -1,20 +1,17 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    name: 'spamping',
-    description: 'Ping 15x le pd mentionné',
-    permission: "Aucune",
-    dm: false,
-    options : [
-        {
-            name: 'pd',
-            type: 'user',
-            description: 'Le pd à ping',
-            required: true
-        }
-    ],
+    data: new Discord.SlashCommandBuilder()
+        .setName('spamping')
+        .setDescription('Ping 15x le pd mentionné')
+        .setDefaultMemberPermissions(null)
+        .setDMPermission(false)
+        .addUserOption(option => option
+            .setName('pd')
+            .setDescription('Le pd à ping')
+            .setRequired(true)),
 
-    async run(bot, interaction) {
+    async execute(bot, interaction) {
 
         if (interaction.options.get('pd').value === '293463332781031434') {
             await interaction.reply("Tu veux vraiment spam le créateur d'Asuka ?");

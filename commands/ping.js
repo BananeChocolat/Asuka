@@ -1,12 +1,13 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    name: 'ping',
-    description: 'Pong!',
-    permission: "Aucune",
-    dm: true,
+    data: new Discord.SlashCommandBuilder()
+        .setName('ping')
+        .setDescription('Pong!')
+        .setDefaultMemberPermissions(null)
+        .setDMPermission(true),
 
-    async run(bot, message) {
+    async execute(bot, message) {
         await message.reply(`Pong! \t${bot.ws.ping}ms`);
     }
 }

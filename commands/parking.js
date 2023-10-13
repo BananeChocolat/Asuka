@@ -5,12 +5,13 @@ const fetch = require('node-fetch');
 
 
 module.exports = {
-    name: 'parking',
-    description: "Affiche l'état actuel des parkings de Strasbourg",
-    permission: "Aucune",
-    dm: true,
-    
-    async run(bot, interaction) {
+    data: new Discord.SlashCommandBuilder()
+        .setName('parking')
+        .setDescription("Affiche l'état actuel des parkings de Strasbourg")
+        .setDefaultMemberPermissions(null)
+        .setDMPermission(true),
+
+    async execute(bot, interaction) {
         
         const parkings = await fetch('https://data.strasbourg.eu/api/records/1.0/search/?dataset=occupation-parkings-temps-reel&q=&rows=-1&sort=-ident&timezone=Europe%2FParis')
             .then(res => res.json())

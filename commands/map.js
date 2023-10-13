@@ -4,31 +4,25 @@ const { MessageEmbed } = require("discord.js");
 
 
 module.exports = {
-    name: 'map',
-    description: 'Une carte avec les coords données',
-    permission: "Aucune",
-    dm: false,
-    options : [
-        {
-            name: 'longitude',
-            type: 'number',
-            description: 'La longitude du centre de la carte (E/W)',
-            required: true
-        },{
-            name: 'latitude',
-            type: 'number',
-            description: 'La latitude du centre de la carte (N/S)',
-            required: true
-        },{
-            name: 'zoom',
-            type: 'number',
-            description: 'Le zoom de la carte',
-            required: true
-        }
-    ],
+    data: new Discord.SlashCommandBuilder()
+        .setName('map')
+        .setDescription("Une carte avec les coords données")
+        .setDefaultMemberPermissions(null)
+        .setDMPermission(false)
+        .addNumberOption(option => option
+            .setName('longitude')
+            .setDescription('La longitude du centre de la carte (E/W)')
+            .setRequired(true))
+        .addNumberOption(option => option
+            .setName('latitude')
+            .setDescription('La latitude du centre de la carte (N/S)')
+            .setRequired(true))
+        .addNumberOption(option => option
+            .setName('zoom')
+            .setDescription('Le zoom de la carte')
+            .setRequired(true)),
 
-    
-    async run(bot, interaction) {
+    async execute(bot, interaction) {
         
         await interaction.reply("3 petites secondes...");
         await interaction.channel.sendTyping()

@@ -5,12 +5,13 @@ const fetch = require('node-fetch');
 
 
 module.exports = {
-    name: 'randomplane',
-    description: 'un avion random',
-    permission: "Aucune",
-    dm: true,
-    
-    async run(bot, interaction) {
+    data: new Discord.SlashCommandBuilder()
+        .setName('randomplane')
+        .setDescription('un avion random')
+        .setDefaultMemberPermissions(null)
+        .setDMPermission(true),
+
+    async execute(bot, interaction) {
         
         await interaction.reply("3 petites secondes...");
         await interaction.channel.sendTyping()
