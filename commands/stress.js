@@ -14,7 +14,11 @@ module.exports = {
                 {name:'X-ENS',value:'X-ENS'},
                 {name:'CCINP',value:'CCINP'},
                 {name:'Centrale-Supélec',value:'CCS'},
-                {name:'Mines',value:'CCMP'})),
+                {name:'Mines',value:'CCMP'}))
+        .addBooleanOption(option => option
+            .setName('days')
+            .setDescription('Affiche le temps restant en jours')
+            .setRequired(false)),
 
     async execute(bot, interaction) {
         rentree = new Date("Sep 4, 2023 08:00:00").getTime()
@@ -68,10 +72,21 @@ module.exports = {
                     concours_name = "les Mines"
                     break;
                 default:
-                    interaction.reply("Erreur : concours inconnu")
+                    interaction.reply("C'est quoi ce concours la ?")
                     break;
             }
-        interaction.reply(`Il reste **${timecalc(now, concours)}** avant __${concours_name}__\nPourcentage d'avancement de l'année : **${percent.toFixed(6)}%**`)
+
+        switch(interaction.options.getBoolean('days') ?? false) {
+            case true:
+                interaction.reply(`Il reste **${Math.floor((concours - now)/(1000*3600*24))}** jours avant __${concours_name}__\nPourcentage d'avancement de l'année : **${percent.toFixed(6)}%**`)
+                break;
+            case false:
+                interaction.reply(`Il reste **${timecalc(now, concours)}** avant __${concours_name}__\nPourcentage d'avancement de l'année : **${percent.toFixed(6)}%**`)
+                break;
+            default:
+                interaction.reply("Tu veux pas la date en 4/21e de seconde tant que t'y es ?")
+                break;
+        }
         }
     }
 }
