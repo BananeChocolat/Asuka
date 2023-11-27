@@ -13,4 +13,4 @@ bot.login(config.token);
 // loadCommands(bot);
 loadEvents(bot);
 
-// robocopy "D:\Documents\GitHub\Asuka" "\\sshfs\bancho@192.168.1.168\Asuka" /s
+// robocopy "D:\Documents\GitHub\Asuka" "\\sshfs\bancho@192.168.1.168\Asuka" /s /XD "D:\Documents\GitHub\Asuka\node_modules"
