@@ -1,3 +1,5 @@
+![banner](https://bannermd.airopi.dev/banner?title=AsukaBot&desc=Un%20bot%20useless&repo=BananeChocolat/Asuka)
+
 # Asuka
 Le bot discord "Asuka" arrive enfin sur GitHub
 
