@@ -2,7 +2,6 @@ node_modules
 .env
 config.js
 suppr.js
-deploy.js
 command_template.js
 new_cmd.sh
 start.sh
