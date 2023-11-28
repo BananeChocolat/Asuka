@@ -23,6 +23,7 @@
     "fs": "^0.0.1-security",
     "node-fetch": "^2.6.1",
     "osm-static-maps": "^3.4.0",
+    "protonmail-api": "^2.2.0",
     "uuid": "^9.0.1"
   }
 }

@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require('@discordjs/builders');
 const Discord = require('discord.js');
-const config = require('./config');
+const config = require('../config');
 const { MessageEmbed } = require("discord.js");
 const fetch = require('node-fetch');
 
