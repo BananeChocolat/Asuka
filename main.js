@@ -7,7 +7,12 @@ const bot = new Discord.Client({disableMentions: "all", shards: "auto", restTime
 // const loadCommands = require('./loaders/loadCommands');
 const loadEvents = require('./loaders/loadEvents');
 
+bot.on('error', (err) => {
+    console.log(err)
+});
+
 bot.commands = new Discord.Collection();
+
 
 bot.login(config.token);
 // loadCommands(bot);
