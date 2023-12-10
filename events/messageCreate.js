@@ -7,13 +7,12 @@ module.exports = async (bot, message) => {
     }
 
 	if (message.content.slice(-7).toLowerCase().includes('quoi')) {
-        if (message.author.bot) {
-            return;
-        } else if (message.author.id === '293463332781031434') {
-            message.reply('f- *pardonnez-moi maître.* :worship_symbol:');
+        if (message.author.id === '293463332781031434') {
+            message.reply('feu- *pardonnez-moi maître.* :worship_symbol:');
         } else {
             message.reply('feur :slight_smile:');
         }
+    }
 
     let prefix = '&';
 
