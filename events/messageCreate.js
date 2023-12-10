@@ -6,7 +6,13 @@ module.exports = async (bot, message) => {
         let text = message.content
     }
 
-	if (message.content.slice(-7).toLowerCase().includes('quoi')) message.reply('feur :slight_smile:');
+	if (message.content.slice(-7).toLowerCase().includes('quoi')) {
+        if (message.author.bot) {
+            return;
+        } else if (message.author.id === '293463332781031434') {
+            message.reply('f- *pardonnez-moi maître.* :worship_symbol:');
+        }
+        message.reply('feur :slight_smile:');
 
     let prefix = '&';
 
