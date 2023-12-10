@@ -11,8 +11,9 @@ module.exports = async (bot, message) => {
             return;
         } else if (message.author.id === '293463332781031434') {
             message.reply('f- *pardonnez-moi maître.* :worship_symbol:');
+        } else {
+            message.reply('feur :slight_smile:');
         }
-        message.reply('feur :slight_smile:');
 
     let prefix = '&';
 
