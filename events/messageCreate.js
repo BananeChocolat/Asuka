@@ -15,13 +15,25 @@ module.exports = async (bot, message) => {
     }
 
     if (message.content.startsWith('http')) {
-        let link = message.content.split(' ')[0];
-        link = link.split('/');
+        let link = message.content.split(' ')[0].split('/');
         let website = link[2].split('www.').pop();
         switch (website) {
             case "curseforge.com":
-                message.reply(`**${message.author.displayName}**\nhttps://modrinth.com/mod/` + link[5]);
-        }
+                message.reply({
+                    content: `**${message.author.displayName}**\nhttps://modrinth.com/mod/` + link[5],
+                    allowedMentions: {repliedUser: false}
+                });
+            case "twitter.com":
+                message.reply({
+                    content: `**${message.author.displayName}**\n${link.join('/').replace("twitter","fxtwitter")}`,
+                    allowedMentions: {repliedUser: false}
+                })
+            case "x.com" :
+                message.reply({
+                    content: `**${message.author.displayName}**\n${link.join('/').replace("x","fxtwitter")}`,
+                    allowedMentions: {repliedUser: false}
+                })
+            }
     }
     
 
