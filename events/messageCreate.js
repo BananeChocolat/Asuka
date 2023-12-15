@@ -14,6 +14,17 @@ module.exports = async (bot, message) => {
         }
     }
 
+    if (message.content.startsWith('http')) {
+        let link = message.content.split(' ')[0];
+        link = link.split('/');
+        let website = link[2].split('www.').pop();
+        switch (website) {
+            case "curseforge.com":
+                message.reply(`**${message.author.displayName}**\nhttps://modrinth.com/mod/` + link[5]);
+        }
+    }
+    
+
     let prefix = '&';
 
     let messageArray = message.content.split(' ');
