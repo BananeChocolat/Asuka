@@ -35,8 +35,8 @@ module.exports = async (bot, message) => {
                 })
             }
     }
-    
 
+    
     let prefix = '&';
 
     let messageArray = message.content.split(' ');
