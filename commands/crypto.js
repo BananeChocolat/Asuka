@@ -27,6 +27,6 @@ module.exports = {
         const coin = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${interaction.options.get('currency').value}&vs_currencies=EUR&include_24hr_change=true&include_last_updated_at=true&precision=2`)
             .then(res => res.json())
             .then(json => json[interaction.options.get('currency').value]);
-        interaction.reply(`**1${currency.symbol.toUpperCase()} = ${coin.eur.toFixed(2)}€** @ <t:${coin.last_updated_at}>   |   24h-change: ${coin.eur_24h_change.toFixed(2)}% ${(coin.eur_24h_change>0) ? ":chart_with_upwards_trend:" : ":chart_with_downwards_trend:"}`)
+        interaction.reply(`**1${currency.symbol.toUpperCase()} = ${coin.eur.toFixed(2)}€** @ <t:${coin.last_updated_at}:R>   |   24h-change: ${coin.eur_24h_change.toFixed(2)}% ${(coin.eur_24h_change>0) ? ":chart_with_upwards_trend:" : ":chart_with_downwards_trend:"}`)
     }
 }
