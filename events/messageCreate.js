@@ -8,7 +8,7 @@ module.exports = async (bot, message) => {
         let text = message.content
     }
 
-	if (/quoi*\W*$/.test(message.content.toLowerCase())) {
+	if (/quoi*\W*(\([^)]*\)|(\s*,\s*))*$/.test(message.content.toLowerCase())) {
         if (message.author.id === '293463332781031434') {
             message.reply('feu- *pardonnez-moi maître.* :worship_symbol:');
         } else {
