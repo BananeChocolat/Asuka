@@ -1,4 +1,6 @@
 const Discord = require('discord.js');
+const { EmbedBuilder } = require('@discordjs/builders');
+const cheerio = require('cheerio');
 
 module.exports = async (bot, message) => {
 
@@ -19,6 +21,7 @@ module.exports = async (bot, message) => {
         const website = link[2].split('www.').pop();
         let message_content = "Unknown website";
         let is_known_website = false;
+        let embed = null;
         switch (website) {
             case "curseforge.com":
                 message_content = `**${message.author.displayName}**\nhttps://modrinth.com/mod/` + link[5]
@@ -40,11 +43,30 @@ module.exports = async (bot, message) => {
                 message_content = `**${message.author.displayName}**\n${link.join('/').replace("x","fxtwitter")}`;
                 is_known_website = true;
                 break;
+            case "dealabs.com" :
+                const web = await fetch(message.content.split(' ')[0]).then(res => res.text())
+
+                deal = JSON.parse(/window.__INITIAL_STATE__.*};/.exec(web)[0].slice(27,-1)).threadDetail;
+
+                embed = new EmbedBuilder()
+                    .setColor([54,183,205])
+                    .setTitle(deal.title)
+                    .setURL(message.content.split(' ')[0])
+                    .setImage(`https://static-pepper.dealabs.com/${deal.mainImage.path}/${deal.mainImage.name}.jpg`)
+                    .addFields(
+                        { name: 'Prix Dealabs', value: `**${deal.price}€**` + (deal.nextBestPrice?` (-${100-Math.round(100*deal.price/deal.nextBestPrice)}%)`:""), inline: true },
+                        { name: 'Prix de base', value: deal.nextBestPrice?`~~${deal.nextBestPrice}€~~`:"No info", inline: true },
+                    )
+
+                message_content = message.author.displayName + " a partagé un deal !";
+                is_known_website = true;
+                break;
         }
         if (is_known_website) {
             message.reply({
                 content: message_content,
-                allowedMentions: {repliedUser: false}
+                allowedMentions: {repliedUser: false},
+                embeds: [embed]
             });
         }
         
