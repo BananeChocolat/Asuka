@@ -49,8 +49,8 @@ module.exports = async (bot, message) => {
                 deal = JSON.parse(/window.__INITIAL_STATE__.*};/.exec(web)[0].slice(27,-1)).threadDetail;
 
                 embed = new EmbedBuilder()
-                    .setColor([54,183,205])
-                    .setTitle(deal.title)
+                    .setColor(!deal.isExpired?[54,183,205]:[150,150,150])
+                    .setTitle((deal.isExpired?"**Expiré** - ":"") + deal.title)
                     .setURL(message.content.split(' ')[0])
                     .setImage(`https://static-pepper.dealabs.com/${deal.mainImage.path}/${deal.mainImage.name}.jpg`)
                     .addFields(
