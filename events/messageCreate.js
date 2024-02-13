@@ -66,7 +66,7 @@ module.exports = async (bot, message) => {
             message.reply({
                 content: message_content,
                 allowedMentions: {repliedUser: false},
-                embeds: [embed]
+                embeds: embed === null ? undefined : [embed],
             });
         }
         

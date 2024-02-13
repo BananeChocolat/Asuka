@@ -27,6 +27,8 @@
     "node-fetch": "^3.3.2",
     "osm-static-maps": "^3.4.0",
     "protonmail-api": "^2.2.0",
+    "sequelize": "^6.37.0",
+    "sqlite3": "^5.1.7",
     "uuid": "^9.0.1"
   }
 }
