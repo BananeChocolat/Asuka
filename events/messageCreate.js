@@ -24,19 +24,23 @@ module.exports = async (bot, message) => {
         let embed = null;
         switch (website) {
             case "curseforge.com":
-                message_content = `**${message.author.displayName}**\nhttps://modrinth.com/mod/` + link[5]
+                message_content = `**${message.author.displayName}**\nhttps://modrinth.com/mod/` + link[5];
                 is_known_website = true;
                 break;
             case "twitter.com":
-                message_content = `**${message.author.displayName}**\n${link.join('/').replace("twitter","fxtwitter")}`
+                message_content = `**${message.author.displayName}**\n${link.join('/').replace("twitter","fxtwitter")}`;
+                is_known_website = true;
+                break;
+            case "reddit.com":
+                message_content = `**${message.author.displayName}**\n${link.join('/').replace("reddit","vxreddit")}`;
                 is_known_website = true;
                 break;
             case "vm.tiktok.com":
                 const regexp_link = /https.*\d{15,}/;
                 let fetch_res = await fetch(message.content.split(' ')[0], {redirect:'manual'})
-                    .then(res => res.text())
-                let full_link = regexp_link.exec(fetch_res)[0]
-                message_content = full_link.replace("tiktok.com", "vxtiktok.com")
+                    .then(res => res.text());
+                let full_link = regexp_link.exec(fetch_res)[0];
+                message_content = full_link.replace("tiktok.com", "vxtiktok.com");
                 is_known_website = true;
                 break;
             case "x.com" :
@@ -44,7 +48,7 @@ module.exports = async (bot, message) => {
                 is_known_website = true;
                 break;
             case "dealabs.com" :
-                const web = await fetch(message.content.split(' ')[0]).then(res => res.text())
+                const web = await fetch(message.content.split(' ')[0]).then(res => res.text());
 
                 deal = JSON.parse(/window.__INITIAL_STATE__.*};/.exec(web)[0].slice(27,-1)).threadDetail;
 
@@ -56,7 +60,7 @@ module.exports = async (bot, message) => {
                     .addFields(
                         { name: 'Prix Dealabs', value: `**${deal.price}€**` + (deal.nextBestPrice?` (-${100-Math.round(100*deal.price/deal.nextBestPrice)}%)`:""), inline: true },
                         { name: 'Prix de base', value: deal.nextBestPrice?`~~${deal.nextBestPrice}€~~`:"No info", inline: true },
-                    )
+                    );
 
                 message_content = message.author.displayName + " a partagé un deal !";
                 is_known_website = true;
