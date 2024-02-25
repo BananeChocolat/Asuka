@@ -67,6 +67,7 @@ module.exports = async (bot, message) => {
                 break;
         }
         if (is_known_website) {
+            console.log(`[EXEC | ${new Date().toLocaleString('fr-FR')}]`.yellow + ` vx-link: ${website}`.green)
             message.reply({
                 content: message_content,
                 allowedMentions: {repliedUser: false},
