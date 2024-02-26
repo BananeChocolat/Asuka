@@ -3,7 +3,7 @@ var colors = require('colors');
 
 module.exports = async (bot) => {
 
-    fs.readdirSync('./commands').filter(file => file.endsWith('.js')).forEach(async file => {
+    fs.readdirSync('./Asuka/commands').filter(file => file.endsWith('.js')).forEach(async file => {
         let command = require(`../commands/${file}`)
         if (!command.name || typeof command.name !== 'string') throw new TypeError("C'est pas une commande ca frr")
 
