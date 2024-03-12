@@ -36,6 +36,7 @@ module.exports = async (bot, message) => {
                 is_known_website = true;
                 break;
             case "vm.tiktok.com":
+            case "tiktok.com":
                 const regexp_link = /https.*\d{15,}/;
                 let fetch_res = await fetch(message.content.split(' ')[0], {redirect:'manual'})
                     .then(res => res.text());
