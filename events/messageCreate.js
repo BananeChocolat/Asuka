@@ -40,12 +40,15 @@ module.exports = async (bot, message) => {
                 is_known_website = true;
                 break;
             case "vm.tiktok.com":
-            case "tiktok.com":
                 const regexp_link = /https.*\d{15,}/;
                 let fetch_res = await fetch(message.content.split(' ')[0], {redirect:'manual'})
-                    .then(res => res.text());
+                .then(res => res.text());
                 let full_link = regexp_link.exec(fetch_res)[0];
                 message_content = full_link.replace("tiktok.com", "vxtiktok.com");
+                is_known_website = true;
+                break;
+            case "tiktok.com":
+                message_content = `**${message.author.displayName}**\n${link.join('/').replace("tiktok","vxtiktok")}`;
                 is_known_website = true;
                 break;
             case "x.com" :
